@@ -63,3 +63,7 @@ Re-ran CEO + Eng + DX review on the SPEC via `/idea-to-ship` → `/autoplan` (Cl
 | Structure | named State Store + Renderer as first-class modules; promoted exemplar + criterion authoring to first-class tasks |
 
 Already correct (not a finding): `.aeh/` is gitignored. **Verdict:** plan APPROVED; ready for the build loop (deploy gate remains binding).
+
+## GIF criterion satisfied by the static gate block (2026-05-19)
+
+The SPEC success criterion calls for a "gate-output GIF above the fold." A scoped `/cso` supply-chain audit of the recorder tooling found `terminalizer` stale (2yr, 22 transitive deps, won't build on Node 24) and `vhs` heavy (needs ffmpeg+ttyd + runtime chromium, known Win11 freeze bug). Decision: satisfy the criterion's *intent* with the README's **fenced gate-output block** (selectable, searchable, accessible, zero new supply-chain surface) rather than an animated GIF. `docs/recorded-run.tape` is committed so the GIF can be rendered later as optional polish (`vhs docs/recorded-run.tape`). Audit: `~/.gstack/projects/agentic-eval-harness/security-supply-chain-20260519.json`.

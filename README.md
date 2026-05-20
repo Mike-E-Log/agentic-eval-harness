@@ -4,7 +4,7 @@ Eval-gated runner for coding agents. Drives Claude Code through ideate -> spec -
 
 It doesn't pretend an uncalibrated multi-LLM vote is a trustworthy classifier. You approve each phase; the gate informs the call. The disciplined path to automation — calibrating the gate against your own approve/reject decisions — is the [v0.2 roadmap](docs/DECISIONS.md).
 
-![gate output](docs/recorded-run.gif)
+What the gate shows you at a phase boundary (`aeh demo` prints exactly this):
 
 ```
 PHASE: plan (gated) - exemplar match 6.67/10 · dispersion σ=2.1
