@@ -42,3 +42,28 @@ The harness was reshaped: the eval gate is **decision-support** (surfaces eviden
 - **Cross-model:** the mechanism round FLAGGED at τ=1.00 but the 6.66-point score spread marks it genuine consensus, not collusion (a live application of the toolkit's own methodology).
 - **Cross-phase theme:** honesty over flash + scope discipline — the gate must not overclaim (decision-support, not verdict); the repo must self-contain and ship in budget.
 - **Verdict:** APPROVED. Decoupled from toolkit, so the 4 repos can run in parallel.
+
+## Second pass — /autoplan before the build loop (2026-05-19)
+
+Re-ran CEO + Eng + DX review on the SPEC via `/idea-to-ship` → `/autoplan` (Claude-subagent voices only; Codex was unavailable). The implementation plan landed at [`../plan/EXECUTION_PLAN.md`](../plan/EXECUTION_PLAN.md). Full review artifact: `~/.gstack/projects/agentic-eval-harness/main-autoplan-review-20260519.md`.
+
+**Premise re-opened and held:** all three voices flagged that v0.1 ships zero *measured* eval methodology (calibration deferred to v0.2), so "decision-support honesty" risks reading as a hedge to an eval-savvy reviewer. Offered: (A) pull a calibration slice into v0.1, (B) keep scope + harden, (C) reframe to gate-only. **Operator chose B** — respect the documented v0.2 deferral; ship runner+gate + 18 hardening fixes. Calibration stays v0.2; single-reference exemplar bias is now documented as a known limitation rather than fixed.
+
+**18 hardening fixes folded into the plan (all auto-decided, mechanical/completeness):**
+
+| Area | Fix |
+|------|-----|
+| Security | prompt-injection (agent-output→judge-prompt) added to threat model + unspoofable untrusted-content delimiter; secret-scrub test on the committed `examples/recorded-run/` fixture |
+| Driver | replace "parse defensively" with a concrete `--output-format json` probe + pinned min CLI version; recorded-envelope version fixtures (the mock can't see CLI-version drift) |
+| Driver (Win) | process-tree kill on timeout, UTF-8 decode (`errors="replace"`), MAX_PATH, CRLF — author is on Windows |
+| State | atomic write (tmp+fsync+`os.replace`) + per-run lockfile; resume semantics per source state; `state_schema_version` mismatch + corrupt-state actionable errors |
+| Parity | snapshot the *constructed prompt string* (highest-drift surface) + record upstream `judge.py` SHA, not just scored output |
+| Stats | precise σ definition (sample stdev over present judges); N=1 suppresses σ; failed judge → excluded row, σ recomputed over survivors; fixed the showcase mean (8,7,7 → 7.33, not 7.4) |
+| DX | pinned install/entry-point (`[project.scripts]`, pipx/uvx, fixture-in-wheel); added `aeh list` + print-id-and-resume-cmd on run; σ legend + disagreement threshold; `aeh demo` runs with vendor SDKs uninstalled (lazy-import); NO_COLOR/non-TTY/ASCII/narrow-term fallbacks; `aeh --version` + LICENSE; error copy for corrupt-state/worktree-collision/missing-fixture/unknown-id; README needs/cost(~15 judge calls/full run)/safety block |
+| Structure | named State Store + Renderer as first-class modules; promoted exemplar + criterion authoring to first-class tasks |
+
+Already correct (not a finding): `.aeh/` is gitignored. **Verdict:** plan APPROVED; ready for the build loop (deploy gate remains binding).
+
+## GIF criterion satisfied by the static gate block (2026-05-19)
+
+The SPEC success criterion calls for a "gate-output GIF above the fold." A scoped `/cso` supply-chain audit of the recorder tooling found `terminalizer` stale (2yr, 22 transitive deps, won't build on Node 24) and `vhs` heavy (needs ffmpeg+ttyd + runtime chromium, known Win11 freeze bug). Decision: satisfy the criterion's *intent* with the README's **fenced gate-output block** (selectable, searchable, accessible, zero new supply-chain surface) rather than an animated GIF. `docs/recorded-run.tape` is committed so the GIF can be rendered later as optional polish (`vhs docs/recorded-run.tape`). Audit: `~/.gstack/projects/agentic-eval-harness/security-supply-chain-20260519.json`.

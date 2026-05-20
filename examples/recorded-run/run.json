@@ -1,0 +1,17 @@
+{
+  "schema_note": "Recorded run replayed by `aeh demo`. Same renderer as a live run.",
+  "phases": [
+    {"schema_version": 1, "phase": "ideate", "exemplar_ref": "prompts/ideate.exemplar.md",
+     "scores": [{"judge": "claude", "score": 8, "critique": "clear problem framing; thin on non-goals", "error": null},
+                {"judge": "gpt", "score": 7, "critique": "good wedge; success metric vague", "error": null},
+                {"judge": "gemini", "score": 8, "critique": "solid; alternatives underexplored", "error": null}]},
+    {"schema_version": 1, "phase": "spec", "exemplar_ref": "prompts/spec.exemplar.md",
+     "scores": [{"judge": "claude", "score": 8, "critique": "covers the error model; thin on edge cases", "error": null},
+                {"judge": "gpt", "score": 7, "critique": "spec is clear; success criteria vague", "error": null},
+                {"judge": "gemini", "score": 7, "critique": "good structure; missing rollback story", "error": null}]},
+    {"schema_version": 1, "phase": "plan", "exemplar_ref": "prompts/plan.exemplar.md",
+     "scores": [{"judge": "claude", "score": 9, "critique": "tasks are bite-sized and tested", "error": null},
+                {"judge": "gpt", "score": 5, "critique": "dependency order unclear in places", "error": null},
+                {"judge": "gemini", "score": 6, "critique": "some steps lack concrete code", "error": null}]}
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "ideate": "Score how clearly this names the problem, the wedge, the non-goals, and a measurable success signal, vs the exemplar.",
+  "spec": "Score completeness of the spec's error model, data model, test strategy, and explicit edge cases, vs the exemplar.",
+  "plan": "Score whether tasks are bite-sized, dependency-ordered, and each traces to a concrete tested requirement, vs the exemplar.",
+  "implement": "Score whether the change is minimal, matches the plan, and has tests that would fail without it, vs the exemplar.",
+  "review": "Score whether the review surfaces real risks, edge cases, and security concerns with concrete fixes, vs the exemplar."
+}
