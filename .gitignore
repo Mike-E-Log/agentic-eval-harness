@@ -4,3 +4,4 @@ __pycache__/
 .aeh/
 .DS_Store
 *.stackdump
+.venv/
