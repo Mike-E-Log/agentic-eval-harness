@@ -7,7 +7,7 @@ started_at: 2026-05-19T23:23:19-07:00
 elapsed_seconds: 0
 last_tick_at: 2026-05-19T23:23:19-07:00
 next_wake_at: null
-tick_count: 0
+tick_count: 14
 last_compact_at: null
 last_ci_check_at: null
 last_known_ci_sha: null
@@ -26,31 +26,33 @@ last_hotfix_touched_files: []
 
 # LOOP -- agentic-eval-harness v0.1
 
-Plan: `plan/EXECUTION_PLAN.md` (14 tasks). Branch: `build/v0.1`. No remote CI configured (local-only); CI gating is a no-op this cycle.
+Plan: `plan/EXECUTION_PLAN.md` (14 tasks). Branch: `build/v0.1`. No remote CI configured (local-only); CI gating is a no-op. Verification = local `pytest` (51 passing).
 
 ## Current focus
 
-- **Task ID:** T01 (Project scaffolding + entry point)
-- **Phase:** build
-- **Why this task:** first unblocked task; all downstream tasks depend on the package existing.
+- **Task ID:** (all DONE)
+- **Phase:** DEPLOY_GATED — `loop/DEPLOY_READY.md` written; awaiting `/idea-to-ship deploy`.
 
 ## Task ledger
 
-- [ ] T01 scaffold + entrypoint
-- [ ] T02 gate model
-- [ ] T03 renderer
-- [ ] T04 aeh demo
-- [ ] T05 vendored judging + parity
-- [ ] T06 eval gate
-- [ ] T07 state store
-- [ ] T08 worktree manager
-- [ ] T09 hardened phase runner
-- [ ] T10 preflight
-- [ ] T11 orchestrator + CLI
-- [ ] T12 prompts + exemplars + criteria
-- [ ] T13 e2e + failure modes + security
-- [ ] T14 README + LICENSE + docs
+- [x] T01 scaffold + entrypoint
+- [x] T02 gate model
+- [x] T03 renderer
+- [x] T04 aeh demo
+- [x] T05 vendored judging + parity
+- [x] T06 eval gate
+- [x] T07 state store
+- [x] T08 worktree manager
+- [x] T09 hardened phase runner
+- [x] T10 preflight
+- [x] T11 orchestrator + CLI
+- [x] T12 prompts + exemplars + criteria
+- [x] T13 e2e + failure modes + security
+- [x] T14 README + packaging + renderer unicode auto-detect
 
 ## Last tick outcome
 
-- (none yet — loop just bootstrapped)
+- **What changed:** T14 — README first screen, wheel data packaging, renderer unicode auto-detect.
+- **Tests:** 51 passed / 0 failed
+- **Commits:** 14 task commits on build/v0.1 (ebc39c8..b5ea74e)
+- **Open item:** `docs/recorded-run.gif` not yet recorded (needs a real terminal capture — manual). README references it; the accessible fenced text block is present as fallback.
