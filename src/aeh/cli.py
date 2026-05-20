@@ -29,8 +29,20 @@ def demo_cmd():
 
 @main.command()
 @click.argument("project", type=click.Path(exists=True, file_okay=False), default=".")
-def run(project):
-    """Drive a project through the phases (creates a new run)."""
+@click.option("--yes", "-y", is_flag=True,
+              help="auto-approve each phase boundary (non-interactive)")
+@click.option("--timeout", default=600, show_default=True,
+              help="per-phase claude timeout in seconds")
+def run(project, yes, timeout):
+    """Drive a project through the phases, gating each boundary.
+
+    Each phase runs `claude --print` in an isolated worktree, then a
+    cross-vendor panel scores the output against the phase exemplar. The gate
+    is decision-support: you approve (or stop) at each boundary.
+    """
+    from aeh.driver import drive
+    from aeh.worktree_manager import WorktreeError
+
     ok, msg = preflight.check_claude()
     if not ok:
         raise SystemExit(msg)
@@ -40,8 +52,19 @@ def run(project):
                    f"Running with: {', '.join(present) or 'none'}.")
     run_id = uuid.uuid4().hex[:8]
     click.echo(f"run started: {run_id} - resume with 'aeh resume {run_id}'")
-    StateStore(Path(project), run_id).write(
-        {"project": str(project), "phase": None, "status": "running"})
+
+    def approve(phase, gate):
+        if yes:
+            return True
+        return click.confirm(f"phase '{phase}' gated - continue to the next phase?",
+                             default=True)
+
+    try:
+        state = drive(Path(project), run_id, judges=present, approve=approve,
+                      timeout=timeout, emit=click.echo)
+    except (WorktreeError, StateError) as e:
+        raise SystemExit(str(e))
+    click.echo(f"run {run_id}: {state['status']} (last phase: {state.get('phase')})")
 
 
 @main.command(name="list")
