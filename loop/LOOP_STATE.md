@@ -1,6 +1,6 @@
 ---
 schema_version: 1
-status: RUNNING
+status: DONE
 mode: bounded
 max_runtime_hours: 72
 started_at: 2026-05-19T23:23:19-07:00
@@ -31,7 +31,7 @@ Plan: `plan/EXECUTION_PLAN.md` (14 tasks). Branch: `build/v0.1`. No remote CI co
 ## Current focus
 
 - **Task ID:** (all DONE)
-- **Phase:** DEPLOY_GATED — `loop/DEPLOY_READY.md` written; awaiting `/idea-to-ship deploy`.
+- **Phase:** WRAP complete — shipped via PR #1 (merge `b9cfb91`); `loop/DONE.md` written.
 
 ## Task ledger
 
