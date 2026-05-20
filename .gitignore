@@ -5,3 +5,6 @@ __pycache__/
 .DS_Store
 *.stackdump
 .venv/
+dist/
+*.egg-info/
+build/

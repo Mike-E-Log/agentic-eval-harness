@@ -19,6 +19,6 @@ aeh = "aeh.cli:main"
 [tool.hatch.build.targets.wheel]
 packages = ["src/aeh"]
 
-# NOTE: data-file packaging (prompts/, examples/recorded-run/ -> aeh/_data/)
-# is added in Task 14 once those dirs exist. Until then the demo loads the
-# fixture via its repo-relative fallback path, so editable installs work.
+[tool.hatch.build.targets.wheel.force-include]
+"prompts" = "aeh/_data/prompts"
+"examples/recorded-run" = "aeh/_data/recorded-run"
