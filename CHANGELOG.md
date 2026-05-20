@@ -16,6 +16,10 @@ First release. An eval-gated runner that drives Claude Code through five phases 
 - Scannable approval renderer: dispersion (σ) legend + disagreement threshold, `NO_COLOR`/non-TTY/ASCII fallbacks, narrow-terminal truncation, and terminal-unicode auto-detection.
 - Five phase prompts + illustrative exemplars + per-phase criteria.
 
+### Fixed
+- `aeh run` now drives the full phase loop end-to-end (`next_phase` → `create_worktree` → `run_phase` → `run_gate` → render → persist → manual approval). The orchestration components existed and were unit-tested, but nothing connected them into `run`; this wires them via a new `aeh/driver.py`. `aeh run` accepts `--yes` (auto-approve) and `--timeout`. Added a real end-to-end test (`tests/test_e2e.py`) that drives all five phases through a fake `claude` and asserts the gate fires and state advances, plus a keyless GitHub Actions CI workflow.
+- The `implement` phase prompt now also writes `docs/IMPLEMENT.md`, giving every phase a uniform gateable artifact.
+
 ### Security
 - Untrusted agent output is wrapped in an unspoofable delimiter before it enters a judge prompt (prompt-injection defense); a test scrubs the committed `examples/recorded-run/` fixture for secret-like tokens.
 
