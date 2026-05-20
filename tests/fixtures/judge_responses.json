@@ -1,0 +1,5 @@
+[
+  {"judge": "claude", "raw": "SCORE: 8\nCRITIQUE: covers error model; thin on edges", "expected_score": 8.0},
+  {"judge": "gpt", "raw": "SCORE: 7\nCRITIQUE: clear; criteria vague", "expected_score": 7.0},
+  {"judge": "gemini", "raw": "SCORE: 7\nCRITIQUE: good structure", "expected_score": 7.0}
+]
