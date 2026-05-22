@@ -3,7 +3,7 @@ Multi-vendor LLM judging — VENDORED SNAPSHOT, adapted from `cross-vendor-judge
 
 This is a snapshot, NOT a live dependency. Re-sync manually; the parity test guards
 drift (it pins both the constructed prompt string and the score aggregation).
-upstream judge.py SHA: 0000000000000000000000000000000000000000   # TODO: fill at vendor time
+upstream judge.py blob SHA: 810fc8a17c09efc4423601164e879e4eaa838057   # git hash-object, vendored 2026-05-22
 
 No import-time side effects: vendor SDKs are imported lazily inside the _call_* paths,
 so `aeh demo` and the parity test run with the SDKs uninstalled.
