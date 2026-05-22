@@ -41,3 +41,15 @@ aeh cleanup <id>      # remove a run's worktree (dry-run; --force to delete)
 ```
 
 **Status:** v0.1 in progress. See [`docs/SPEC.md`](./docs/SPEC.md) for the design and [`docs/DECISIONS.md`](./docs/DECISIONS.md) for how it was reached (including the reviews that shaped it).
+
+---
+
+**AI-evaluation engineering portfolio** — five repos, one discipline:
+
+- [**ai-eval-toolkit**](https://github.com/Mike-E-Log/ai-eval-toolkit) — judge-vs-human calibration (Cohen's κ / Kendall-τ vs Landis–Koch bands)
+- **agentic-eval-harness** *(you are here)* — eval-gated Claude Code phase boundaries with cross-vendor scorecards
+- [**ai-eval-atlas**](https://github.com/Mike-E-Log/ai-eval-atlas) — practitioner + technique map, source-linked
+- [**ai-engineer-best-practices**](https://github.com/Mike-E-Log/ai-engineer-best-practices) — handbook + `score` MCP tool (3-vendor judge ensemble)
+- [**learn-ai-eval**](https://github.com/Mike-E-Log/learn-ai-eval) — Claude-tutored learning engine for the eval canon
+
+Profile: [github.com/Mike-E-Log](https://github.com/Mike-E-Log) · website: [mikeilog.com](https://mikeilog.com)
