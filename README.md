@@ -1,6 +1,17 @@
-# agentic-eval-harness
+<p align="center">
+  <img alt="python" src="https://img.shields.io/badge/python-3.11%2B-7c3aed?style=flat-square&labelColor=0f172a"/>
+  <img alt="judges" src="https://img.shields.io/badge/judges-claude%20%2B%20gpt%20%2B%20gemini-f59e0b?style=flat-square&labelColor=0f172a"/>
+  <img alt="mode" src="https://img.shields.io/badge/mode-decision--support-22c55e?style=flat-square&labelColor=0f172a"/>
+  <img alt="status" src="https://img.shields.io/badge/status-v0.1%20in%20progress-0ea5e9?style=flat-square&labelColor=0f172a"/>
+</p>
 
-Eval-gated runner for coding agents. Drives Claude Code through ideate -> spec -> plan -> implement -> review and, at each boundary, runs an independent cross-vendor panel that scores the phase output against a known-good exemplar, surfacing per-judge scores, disagreement (sigma), and critiques to you. **Decision-support, not an automated verdict.**
+<h2 align="center">agentic-eval-harness · eval-gated runner for coding agents</h2>
+
+<p align="center">
+  <em>Drives Claude Code through ideate → spec → plan → implement → review; at each<br/>boundary, a cross-vendor judge panel scores against a known-good exemplar.<br/>Decision-support, not an automated verdict.</em>
+</p>
+
+---
 
 It doesn't pretend an uncalibrated multi-LLM vote is a trustworthy classifier. You approve each phase; the gate informs the call. The disciplined path to automation — calibrating the gate against your own approve/reject decisions — is the [v0.2 roadmap](docs/DECISIONS.md).
 
